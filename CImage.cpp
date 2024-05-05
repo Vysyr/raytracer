@@ -29,6 +29,9 @@ void CImage::save(const std::string& filename, bool is_gamma_correction) {
     cv::Mat img_8bit = cv::Mat(cvSize(width, height), CV_8UC3, cv::Scalar(0,0,0)); // 8-bits RGB image
 
     float2uchar(img_8bit, is_gamma_correction);
+
+    cv::imshow("z korekcja gamma",img_8bit);
+
     
     cv::imwrite(filename, img_8bit);
 }
@@ -66,7 +69,7 @@ void CImage::float2uchar(cv::Mat& img_8bit, bool is_gamma_correction) {
 
             // gamma correction
             if(is_gamma_correction) {
-                float gamma = 2.2f;
+                float gamma = 2.125f;
                 vecf[0] = powf(vecf[0], 1.0f/gamma);
                 vecf[1] = powf(vecf[1], 1.0f/gamma);
                 vecf[2] = powf(vecf[2], 1.0f/gamma);
@@ -86,13 +89,56 @@ void CImage::float2uchar(cv::Mat& img_8bit, bool is_gamma_correction) {
 /// \fn float2uchar(void)
 /// \brief Applies gamma correction to each pixel in the image.
 void CImage::float2uchar(cv::Mat& img_8bit) {
-    float2uchar(img_8bit, false);
+    float2uchar(img_8bit, true);
 }
 
 
 /// \fn plotCalibChart(void)
 /// \brief Plots calibration chart in image.
 void CImage::plotCalibChart() {
+    //std::cout<<"a";
+    glm::vec3 rgb = glm::vec3{0,0,0};
+    for(int i = (this->width)*0.01; i < (this->width)*0.2; i++) {
+        //std::cout<<"b";
+        for(int j = (this->height)*0.75; j < (this->height)*0.99; j++) {
+            //std::cout<<"c";
+            this->setPixel(i, j, rgb);
+        }
+    }
+    rgb = glm::vec3(0.25,0.25,0.25);
+    for(int i = (this->width)*0.21; i < (this->width)*0.4; i++) {
+        //std::cout<<"b";
+        for(int j = (this->height)*0.75; j < (this->height)*0.99; j++) {
+            //std::cout<<"c";
+            this->setPixel(i, j, rgb);
+        }
+    }
+    rgb = glm::vec3(0.5,0.5,0.5);
+    for(int i = (this->width)*0.41; i < (this->width)*0.6; i++) {
+        //std::cout<<"b";
+        for(int j = (this->height)*0.75; j < (this->height)*0.99; j++) {
+            //std::cout<<"c";
+            this->setPixel(i, j, rgb);
+        }
+    }
+    rgb = glm::vec3(0.75,0.75,0.75);
+    for(int i = (this->width)*0.61; i < (this->width)*0.8; i++) {
+        //std::cout<<"b";
+        for(int j = (this->height)*0.75; j < (this->height)*0.99; j++) {
+            //std::cout<<"c";
+            this->setPixel(i, j, rgb);
+        }
+    }
+    rgb = glm::vec3(1,1,1);
+    for(int i = (this->width)*0.81; i < (this->width)*0.99; i++) {
+        //std::cout<<"b";
+        for(int j = (this->height)*0.75; j < (this->height)*0.99; j++) {
+            //std::cout<<"c";
+            this->setPixel(i, j, rgb);
+        }
+    }
+
+
 
 }
 

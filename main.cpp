@@ -249,6 +249,7 @@ void draw_images() {
         }
     }
 
+
     // writes image to disk file with gamma correction
    // image.save("output.png", true);
 
@@ -321,10 +322,14 @@ void draw_spheres(){
         }
     }
 
-    // writes image to disk file with gamma correction
-    // image.save("output.png", true);
+    image.plotCalibChart();
 
-    cv::imshow("img", image.getImage());
+
+    // writes image to disk file with gamma correction
+    image.save("output.png", true);
+
+
+    cv::imshow("bez korekcjo gamma", image.getImage());
 
     cv::waitKey();
 

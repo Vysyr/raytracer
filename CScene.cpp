@@ -72,6 +72,17 @@ void CScene::create(glm::vec3 eyep,glm::vec3 lookp,glm::vec3 up, float fov, int 
 
 }
 
+void CScene::create2(glm::vec3 eyep,glm::vec3 lookp,glm::vec3 up, float fov, int width, int height) {
+    lightList.clear();
+    objectList.clear();
+
+    CCamera camm(eyep,lookp,up,width,height,fov);
+    cam = camm;
+
+
+}
+
+
 
 void CScene::createT(glm::vec3 eyep,glm::vec3 lookp,glm::vec3 up, float fov, int width, int height) {
 

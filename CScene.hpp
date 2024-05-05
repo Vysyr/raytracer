@@ -72,6 +72,8 @@ public:
     void create(glm::vec3 eyep,glm::vec3 lookp,glm::vec3 up, float fov, int width, int height);
 
     void createT(glm::vec3 eyep, glm::vec3 lookp, glm::vec3 up, float fov, int width, int height);
+
+    void create2(glm::vec3 eyep,glm::vec3 lookp,glm::vec3 up, float fov, int width, int height);
 };
 
 
